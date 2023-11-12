@@ -8,7 +8,7 @@ filelock==3.12.4
 Pillow==10.0.1
 pipenv==2023.10.20
 platformdirs==3.11.0
-psycopg2==2.9.9
+psycopg2-binary==2.9.9
 sqlparse==0.4.4
 typing_extensions==4.8.0
 virtualenv==20.24.5
