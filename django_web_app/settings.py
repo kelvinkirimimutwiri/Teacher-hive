@@ -144,4 +144,7 @@ LOGIN_URL = 'login'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 CRISPY_TEMPLATE_PACK = 'bootstrap4' 
 CRISPY_ALLOWED_TEMPLATE_PACK = 'bootstrap4' 
-CSRF_TRUSTED_ORIGINS = ['https://3647-154-159-244-236.ngrok-free.app','https://8000-kelvinkirimi-production-wg7e0ipviuh.ws-eu105.gitpod.io']
+CSRF_TRUSTED_ORIGINS = ['https://3647-154-159-244-236.ngrok-free.app',
+                        'https://.vercel.app',
+                        'https://.now.sh',
+                          'https://.edicet.com']
