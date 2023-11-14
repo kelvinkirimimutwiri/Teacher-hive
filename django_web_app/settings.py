@@ -9,8 +9,8 @@ https://docs.djangoproject.com/en/2.1/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/2.1/ref/settings/
 """
-
-import os
+import dj_database_url
+import os 
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -20,19 +20,12 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/2.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '@5&-q%^o=@mb@=@e%b9yz^b#l-2)w&_s0ick#=wy3kw36$z($g'
+SECRET_KEY = os.environ.get("SELECT_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = os.environ.get("DEBUG", "False").lower() == "true"
 
-ALLOWED_HOSTS = [
-   '3647-154-159-244-236.ngrok-free.app',
-   '8000-kelvinkirimi-production-wg7e0ipviuh.ws-eu105.gitpod.io',
-   '127.0.0.1',
-   '.vercel.app',
-   '.now.sh',
-   '.edicet.com'
-]
+ALLOWED_HOSTS = os.environ.get("ALLOWED_HOSTS").split("")
 
 
 # Application definition
@@ -88,13 +81,14 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'railway',
-        'USER':'postgres',
+        'USER':'postgres', 
         'PASSWORD':'-G4d5d31A25CGA1cE11daa25BA1E51AC',
         'HOST':'monorail.proxy.rlwy.net',
         'PORT':'14344',
     }
 }
-
+database_url=os.environ.get("DATABASE_URL")
+DATABASES["default"] = dj_database_url.parse(database_url)
 
 # Password validation
 # https://docs.djangoproject.com/en/2.1/ref/settings/#auth-password-validators
@@ -144,7 +138,4 @@ LOGIN_URL = 'login'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 CRISPY_TEMPLATE_PACK = 'bootstrap4' 
 CRISPY_ALLOWED_TEMPLATE_PACK = 'bootstrap4' 
-CSRF_TRUSTED_ORIGINS = ['https://3647-154-159-244-236.ngrok-free.app',
-                        'https://.vercel.app',
-                        'https://.now.sh',
-                          'https://.edicet.com']
+CSRF_TRUSTED_ORIGINS = os.environ.get("ALLOWED_HOSTS").split("")
