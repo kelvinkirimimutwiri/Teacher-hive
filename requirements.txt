@@ -2,9 +2,10 @@ asgiref==3.7.2
 certifi==2023.7.22
 crispy-bootstrap4==2022.1
 distlib==0.3.7
-Django==3.2.19
+dj-database-url==2.1.0
+Django==4.2.6
 django-crispy-forms==2.0
-filelock==3.12.3
+filelock==3.12.4
 gunicorn==21.2.0
 packaging==23.2
 Pillow==10.0.1
